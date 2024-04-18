@@ -137,7 +137,7 @@ GameObject:
   - component: {fileID: 1823996}
   m_Layer: 0
   m_Name: Circle
-  m_TagString: Untagged
+  m_TagString: Customer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -563,7 +563,7 @@ GameObject:
   - component: {fileID: 233021206}
   m_Layer: 0
   m_Name: package
-  m_TagString: Untagged
+  m_TagString: Package
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
