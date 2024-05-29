@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
-using System;
 
-public class Quiz : MonoBehaviour 
+public class Quiz : MonoBehaviour
 {
     [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
-    [SerializeField]QuestionSO question;
+    [SerializeField] QuestionSO question;
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
@@ -19,13 +18,13 @@ public class Quiz : MonoBehaviour
     [Header("Timer")]
     [SerializeField] Image timerImage;
     Timer timer;
+
     void Start()
     {
-        timer = FindObjectOfType<Timer>(); // DisplayQuestion();
+        timer = FindObjectOfType<Timer>(); // Find the Timer script in the scene
         getNextQuestion();
-      
-
     }
+
     private void Update()
     {
         timerImage.fillAmount = timer.fillFraction;
@@ -34,7 +33,6 @@ public class Quiz : MonoBehaviour
             getNextQuestion();
             timer.loadNextQuestion = false;
         }
-
     }
 
     public void onAnswerSelected(int index)
@@ -45,24 +43,21 @@ public class Quiz : MonoBehaviour
             questionText.text = "Correct!";
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-
         }
-        else 
+        else
         {
-            correctAnswerIndex= question.GetCorrectAnswerIndex();
+            correctAnswerIndex = question.GetCorrectAnswerIndex();
             string correctAnswer = question.GetAnswer(correctAnswerIndex);
-            questionText.text = "the correct answer is:\n "+ correctAnswer;
+            questionText.text = "The correct answer is:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
         }
         SetButtonState(false);
-       // if (timer != null)
-        //{
-        //    timer.CancelTimer();
-       // }
-
+        if (timer != null)
+        {
+            timer.CancelTimer();
+        }
     }
-
 
     void getNextQuestion()
     {
@@ -71,11 +66,9 @@ public class Quiz : MonoBehaviour
         DisplayQuestion();
     }
 
-   
     void DisplayQuestion()
     {
         questionText.text = question.GetQuestion();
-
         for (int i = 0; i < answerButtons.Length; i++)
         {
             TextMeshProUGUI buttonText = answerButtons[i].GetComponentInChildren<TextMeshProUGUI>();
@@ -83,24 +76,21 @@ public class Quiz : MonoBehaviour
         }
     }
 
-   void SetButtonState(bool state)
+    void SetButtonState(bool state)
     {
         for (int i = 0; i < answerButtons.Length; i++)
         {
             Button button = answerButtons[i].GetComponent<Button>();
             button.interactable = state;
-         }
+        }
     }
 
-    private void SetDefaultButtonSprites()
+    void SetDefaultButtonSprites()
     {
         for (int i = 0; i < answerButtons.Length; i++)
         {
             Image buttonImage = answerButtons[i].GetComponent<Image>();
             buttonImage.sprite = defaultAnswerSprite;
-
         }
     }
-
-
 }
