@@ -5,20 +5,35 @@ using TMPro;
 using UnityEngine.UI;
 using System;
 
-public class Quiz : MonoBehaviour
+public class Quiz : MonoBehaviour 
 {
+    [Header("Questions")]
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField]QuestionSO question;
+    [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
+    [Header("Button Colors")]
     [SerializeField] Sprite defaultAnswerSprite;
     [SerializeField] Sprite correctAnswerSprite;
-
+    [Header("Timer")]
+    [SerializeField] Image timerImage;
+    Timer timer;
     void Start()
     {
-        // DisplayQuestion();
+        timer = FindObjectOfType<Timer>(); // DisplayQuestion();
         getNextQuestion();
+      
 
+    }
+    private void Update()
+    {
+        timerImage.fillAmount = timer.fillFraction;
+        if (timer.loadNextQuestion)
+        {
+            getNextQuestion();
+            timer.loadNextQuestion = false;
+        }
 
     }
 
@@ -41,6 +56,10 @@ public class Quiz : MonoBehaviour
             buttonImage.sprite = correctAnswerSprite;
         }
         SetButtonState(false);
+       // if (timer != null)
+        //{
+        //    timer.CancelTimer();
+       // }
 
     }
 

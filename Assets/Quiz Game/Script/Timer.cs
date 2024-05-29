@@ -1,15 +1,20 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Timer : MonoBehaviour
 {
     [SerializeField] float timeToCompleteQuestion = 30f;
-    [SerializeField] float timeToShowCorrectAnser = 10f;
+    [SerializeField] float timeToShowCorrectAnswer = 10f;
     float timerValue;
+    public bool loadNextQuestion;
     public bool isAnsweringQuestion = false;
+    public float fillFraction;
 
-    // Update is called once per frame
+    void Start()
+    {
+        timerValue = timeToCompleteQuestion;
+        isAnsweringQuestion = true;
+    }
+
     void Update()
     {
         UpdateTimer();
@@ -20,26 +25,35 @@ public class Timer : MonoBehaviour
         timerValue -= Time.deltaTime;
         if (isAnsweringQuestion)
         {
-            if (timerValue <= 0)
+            if (timerValue > 0)
+            {
+                fillFraction = timerValue / timeToCompleteQuestion;
+            }
+            else
             {
                 isAnsweringQuestion = false;
-                timerValue = timeToShowCorrectAnser;
+                timerValue = timeToShowCorrectAnswer;
             }
         }
         else
         {
-            if (timerValue <= 0)
+            if (timerValue > 0)
+            {
+                fillFraction = timerValue / timeToShowCorrectAnswer;
+            }
+            else
             {
                 isAnsweringQuestion = true;
                 timerValue = timeToCompleteQuestion;
+                loadNextQuestion = true;
             }
         }
 
-        Debug.Log(timerValue);
-    
+        Debug.Log(isAnsweringQuestion + ":" + timerValue + "=" + fillFraction);
     }
 
-    
-
-
+    public void CancelTimer()
+    {
+        timerValue = 0;
+    }
 }
