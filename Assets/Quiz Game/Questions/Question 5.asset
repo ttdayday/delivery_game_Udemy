@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: What is the name of the spirited young girl who gets lost in a mysterious
     world and works at a bathhouse in the movie "Spirited Away"?
+  answers:
+  - 1
+  - 2
+  - 3
+  - 4
+  correctAnswerIndex: 2

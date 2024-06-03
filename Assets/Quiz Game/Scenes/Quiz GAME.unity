@@ -355,7 +355,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onAnswerSelected
+      value: OnAnswerSelected
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -494,7 +494,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onAnswerSelected
+      value: OnAnswerSelected
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -716,7 +716,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   questionText: {fileID: 104622842}
-  question: {fileID: 11400000, guid: 97ca3d0b42111454481db0e18b9cf7eb, type: 2}
+  questions:
+  - {fileID: 11400000, guid: 97ca3d0b42111454481db0e18b9cf7eb, type: 2}
+  - {fileID: 11400000, guid: d5268ddf92c83084f92f2467cf10f006, type: 2}
+  - {fileID: 11400000, guid: 8d496dd852acc3343a134638ac322f6a, type: 2}
+  - {fileID: 11400000, guid: c3f52e3009e29ab448987250e7fe75ca, type: 2}
+  - {fileID: 11400000, guid: 3dd838f26d1867c4b894c4606ff72e12, type: 2}
   answerButtons:
   - {fileID: 1520301805}
   - {fileID: 1580541111}
@@ -754,8 +759,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 73788f7403d332d46bd5e286fe39a256, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  timeToCompleteQuestion: 10
-  timeToShowCorrectAnser: 5
+  timeToCompleteQuestion: 6
+  timeToShowCorrectAnswer: 3
+  loadNextQuestion: 0
   isAnsweringQuestion: 0
   fillFraction: 0
 --- !u!224 &361677657
@@ -807,7 +813,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onAnswerSelected
+      value: OnAnswerSelected
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName
@@ -1682,7 +1688,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
-      value: onAnswerSelected
+      value: OnAnswerSelected
       objectReference: {fileID: 0}
     - target: {fileID: 2057164106498185614, guid: 0033599126cac3848b28d43731bf95d1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_TargetAssemblyTypeName

@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Which anime series features a high school student who discovers a notebook
     that allows him to kill anyone by writing their name in it?
+  answers:
+  - 1
+  - 2
+  - 3
+  - 4
+  correctAnswerIndex: 2

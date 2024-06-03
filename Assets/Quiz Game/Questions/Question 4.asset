@@ -14,3 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   question: Who is the protagonist of the anime "Dragon Ball Z" known for his spiky
     hair and powerful transformations?
+  answers:
+  - 1
+  - 2
+  - 3
+  - 4
+  correctAnswerIndex: 2
