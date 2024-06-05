@@ -10,7 +10,7 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI questionText;
     [SerializeField] List<QuestionSO> questions = new List<QuestionSO>();
     QuestionSO currentQuestion;
-       
+
     [Header("Answers")]
     [SerializeField] GameObject[] answerButtons;
     int correctAnswerIndex;
@@ -25,14 +25,12 @@ public class Quiz : MonoBehaviour
     [SerializeField] TextMeshProUGUI scoreText;
     ScoreKeeper scoreKeeper;
 
-
     void Start()
     {
         timer = FindObjectOfType<Timer>(); // Find the Timer script in the scene
-        GetNextQuestion();
         scoreKeeper = FindObjectOfType<ScoreKeeper>();
-         }
-
+        GetNextQuestion();
+    }
 
     private void Update()
     {
@@ -45,24 +43,20 @@ public class Quiz : MonoBehaviour
         }
         else if (!hasAnsweredEarly && !timer.isAnsweringQuestion)
         {
-            //Debug.Log("time is up");
+            // Debug.Log("time is up");
             DisplayAnswer(-1);
             SetButtonState(false);
-            
         }
-
-
     }
 
     public void OnAnswerSelected(int index)
     {
-        Debug.Log("Answer selected: " + index); 
+        Debug.Log("Answer selected: " + index);
         hasAnsweredEarly = true;
         DisplayAnswer(index);
         SetButtonState(false);
         timer.CancelTimer();
-        scoreText.text = "Scoree:" + scoreKeeper.CalculateScore() + "%";
-       
+        UpdateScore();
     }
 
     void DisplayAnswer(int index)
@@ -74,7 +68,6 @@ public class Quiz : MonoBehaviour
             buttonImage = answerButtons[index].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
             scoreKeeper.IncrementCorrectAnswers();
-            
         }
         else
         {
@@ -83,13 +76,11 @@ public class Quiz : MonoBehaviour
             questionText.text = "The correct answer is:\n" + correctAnswer;
             buttonImage = answerButtons[correctAnswerIndex].GetComponent<Image>();
             buttonImage.sprite = correctAnswerSprite;
-            
         }
     }
 
     void GetNextQuestion()
     {
-
         if (questions.Count > 0)
         {
             SetButtonState(true);
@@ -98,7 +89,6 @@ public class Quiz : MonoBehaviour
             DisplayQuestion();
             scoreKeeper.IncrementQuestionsSeen();
         }
-
     }
 
     void GetRandomQuestion()
@@ -137,5 +127,12 @@ public class Quiz : MonoBehaviour
             Image buttonImage = answerButtons[i].GetComponent<Image>();
             buttonImage.sprite = defaultAnswerSprite;
         }
+    }
+
+    void UpdateScore()
+    {
+        int score = scoreKeeper.CalculateScore();
+        Debug.Log("Updating score: " + score);
+        scoreText.text = "Score: " + score + "%";
     }
 }
